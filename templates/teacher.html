@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>교사용 보기 - AI Invention Coach</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1>교사용 학생 결과</h1>
+    <p><strong>이번 주 주제:</strong> {{ weekly_topic }}</p>
+    <a href="{{ url_for('index') }}">학생 시작 화면으로</a>
+
+    {% if results %}
+      {% for row in results %}
+      <div class="card">
+        <p><strong>저장 시각:</strong> {{ row.timestamp }}</p>
+        <p><strong>학년:</strong> {{ row.grade }}</p>
+        <p><strong>언어:</strong> {{ row.language }}</p>
+        <p><strong>문제:</strong> {{ row.problem }}</p>
+        <p><strong>발명 방향:</strong> {{ row.invention_directions }}</p>
+        <p><strong>최종 아이디어:</strong> {{ row.final_idea }}</p>
+        <p><strong>발명 노트 요약:</strong></p>
+        <pre>{{ row.note_summary }}</pre>
+      </div>
+      {% endfor %}
+    {% else %}
+      <p>저장된 결과가 아직 없습니다.</p>
+    {% endif %}
+  </div>
+</body>
+</html>

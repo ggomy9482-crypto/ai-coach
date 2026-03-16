@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>발명 노트 - AI Invention Coach</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1>나의 발명 노트</h1>
+
+    <div class="card">
+      <p><strong>주제:</strong> {{ topic }}</p>
+      <p><strong>문제:</strong> {{ problem }}</p>
+      <p><strong>언제:</strong> {{ answers.when }}</p>
+      <p><strong>누가:</strong> {{ answers.who }}</p>
+      <p><strong>왜:</strong> {{ answers.why }}</p>
+      <p><strong>발명 방향:</strong> {{ direction }}</p>
+      <p><strong>최종 아이디어:</strong> {{ final_idea }}</p>
+    </div>
+
+    <div class="card">
+      <h2>자동 생성 요약</h2>
+      <pre>{{ note_summary }}</pre>
+    </div>
+
+    <form method="post">
+      <button type="submit">처음으로 돌아가기</button>
+    </form>
+  </div>
+</body>
+</html>
