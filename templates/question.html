@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>문제 찾기 - AI Invention Coach</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1>문제 찾기와 코칭 질문</h1>
+    <p><strong>이번 주 주제:</strong> {{ topic }}</p>
+
+    <div class="card">
+      <h2>1) 생활 속 불편함 적기</h2>
+      <p class="help">예시: "연필과 지우개를 자주 떨어뜨려서 수업 시간이 끊겨요."</p>
+      <form method="post">
+        <input type="hidden" name="form_type" value="problem">
+        <textarea name="problem" rows="3" placeholder="불편한 점을 적어주세요" required>{{ problem }}</textarea>
+        <button type="submit">코칭 질문 받기</button>
+      </form>
+    </div>
+
+    {% if coaching_questions %}
+    <div class="card">
+      <h2>2) AI 코칭 질문에 답하기</h2>
+      <form method="post">
+        <input type="hidden" name="form_type" value="answers">
+
+        <label>{{ coaching_questions[0] }}</label>
+        <input type="text" name="answer_when" required>
+
+        <label>{{ coaching_questions[1] }}</label>
+        <input type="text" name="answer_who" required>
+
+        <label>{{ coaching_questions[2] }}</label>
+        <input type="text" name="answer_why" required>
+
+        <button type="submit">발명 방향 보기</button>
+      </form>
+    </div>
+    {% endif %}
+
+    <a href="{{ url_for('index') }}">처음으로</a>
+  </div>
+</body>
+</html>

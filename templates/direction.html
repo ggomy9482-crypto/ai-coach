@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>발명 방향 - AI Invention Coach</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1>발명 아이디어 방향</h1>
+
+    <div class="card">
+      <p><strong>주제:</strong> {{ topic }}</p>
+      <p><strong>문제:</strong> {{ problem }}</p>
+      <p><strong>언제:</strong> {{ answers.when }}</p>
+      <p><strong>누가:</strong> {{ answers.who }}</p>
+      <p><strong>왜:</strong> {{ answers.why }}</p>
+    </div>
+
+    <div class="card">
+      <h2>AI가 제안한 발명 방향</h2>
+      <ul>
+        {% for d in direction_data.directions %}
+          <li>{{ d }}</li>
+        {% endfor %}
+      </ul>
+      <p><strong>격려:</strong> {{ direction_data.encouragement }}</p>
+      <p><strong>생각 질문:</strong> {{ direction_data.open_question }}</p>
+    </div>
+
+    <div class="card">
+      <h2>내가 고른 방향과 아이디어</h2>
+      <form method="post">
+        <label for="chosen_direction">고른 발명 방향</label>
+        <input type="text" id="chosen_direction" name="chosen_direction" required>
+
+        <label for="final_idea">최종 발명 아이디어</label>
+        <textarea id="final_idea" name="final_idea" rows="4" required></textarea>
+
+        <button type="submit">발명 노트 만들기</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

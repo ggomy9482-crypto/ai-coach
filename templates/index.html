@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>AI Invention Coach</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1>{{ labels.app_title }}</h1>
+
+    <div class="card">
+      <h2>{{ labels.weekly_topic }}</h2>
+      <p class="topic">{{ weekly_topic }}</p>
+    </div>
+
+    <form method="post" class="card">
+      <label for="language">언어 선택</label>
+      <select name="language" id="language">
+        <option value="ko">Korean</option>
+        <option value="en">English</option>
+        <option value="zh">Chinese</option>
+        <option value="vi">Vietnamese</option>
+      </select>
+
+      <label for="grade">학년 선택</label>
+      <select name="grade" id="grade">
+        <option value="3">3학년</option>
+        <option value="4">4학년</option>
+        <option value="5">5학년</option>
+        <option value="6">6학년</option>
+      </select>
+
+      <button type="submit">{{ labels.start }}</button>
+    </form>
+
+    <a href="{{ url_for('teacher') }}">교사용 결과 보기</a>
+  </div>
+</body>
+</html>
